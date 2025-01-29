@@ -1,6 +1,6 @@
 """Faizan A. Rakin"""
 
-print("Welcome to Calc")
+print("Welcome to Calculator")
 
 # Call functions every time a button is pressed on my GUI
 
