@@ -1,5 +1,7 @@
 #F.Rakin_Simple_Calculator
 
+import math
+
 # Ask for user's name and greet them
 def greeting() -> str :
     """
@@ -8,7 +10,6 @@ def greeting() -> str :
     name = input("What is your name? \n").title().strip()
 
     print(f"Hi {name}! Welcome to my Simple Calculator.") 
-
 
 
 def add(number_1, number_2) -> float: 
@@ -29,7 +30,6 @@ def subtract(number_1, number_2) -> float:
     print(f"The result of subtraction is: {subtraction}")
 
     return subtraction
-    pass
 
 
 def multiply(number_1, number_2) -> float:
@@ -40,7 +40,6 @@ def multiply(number_1, number_2) -> float:
     print(f"The result of multiplication is: {multiplication}")
 
     return multiplication
-    pass
 
 
 def divide(number_1, number_2) -> float:
@@ -51,7 +50,26 @@ def divide(number_1, number_2) -> float:
     print(f"The result of division is: {division}")
 
     return division
-    pass
+
+
+def square(number_1, number_2) -> float:
+    """
+    This function will be used to square numbers
+    """
+    squared_number = number_1 ** number_2
+    print(f"The result of division is: {squared_number}")
+
+    return squared_number   
+
+
+def square_root(number_1) -> float:
+    """
+    This function will be used to square root the first number selected by the user
+    """
+    square_rooted_number = math.sqrt(number_1)
+    print(f"The square rooted number is: {square_rooted_number}")
+
+    return square_rooted_number    
 
 
 def calculation() -> float:
@@ -61,11 +79,14 @@ def calculation() -> float:
 
     while True:
         try:
+
+            print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Square \n 6. Square Root (2nd number does not matter) \n")
+
+            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6]: "))
+
             number_1 = float(input("Please enter the 1st number: "))
             number_2 = float(input("Please enter the 2nd number: "))
 
-            print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division")
-            operation = int(input("Please enter your choice of operation [1/2/3/4]: "))
 
             if operation == 1:
                 add(number_1, number_2)
@@ -82,6 +103,16 @@ def calculation() -> float:
             elif operation == 4:
                 divide(number_1, number_2)
                 break
+
+            elif operation == 5:
+                square(number_1, number_2)
+
+            elif operation == 6:
+                square_root(number_1)
+                break
+
+            else: 
+                continue
 
             break
         except ValueError:
