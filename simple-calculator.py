@@ -1,10 +1,17 @@
-"""Faizan A. Rakin"""
+#F.Rakin_Simple_Calculator
 
-print("Welcome to Calculator!")
+# Ask for user's name and greet them
+def greeting() -> str :
+    """
+    This function asks the user's name and greets the user
+    """
+    name = input("What is your name? \n").title().strip()
 
-# Call functions every time a button is pressed on my GUI
+    print(f"Hi {name}! Welcome to my Simple Calculator.") 
 
-def add(number_1, number_2): 
+
+
+def add(number_1, number_2) -> float: 
     """
     This function will be used to add numbers inputted
     """ 
@@ -13,7 +20,8 @@ def add(number_1, number_2):
 
     return addition
 
-def subtract(number_1, number_2):
+
+def subtract(number_1, number_2) -> float:
     """
     This function will be used to subtract one number from another
     """
@@ -23,7 +31,8 @@ def subtract(number_1, number_2):
     return subtraction
     pass
 
-def multiply(number_1, number_2):
+
+def multiply(number_1, number_2) -> float:
     """"
     This function will be used to multiply numbers
     """
@@ -33,18 +42,19 @@ def multiply(number_1, number_2):
     return multiplication
     pass
 
-def divide(number_1, number_2):
+
+def divide(number_1, number_2) -> float:
     """
     This function will be used to divide numbers
     """
-    division = number_1 / number_2
+    division = round(number_1 / number_2, 4)
     print(f"The result of division is: {division}")
 
     return division
     pass
 
 
-def calculation():
+def calculation() -> float:
     """
     This function will do the calculation by calling other functions and display results
     """
@@ -80,5 +90,31 @@ def calculation():
     return number_1, number_2
 
 
-    
-calculation()
+def use_again() -> str:
+    """
+    This function gives the user the choice to use the calculator again.
+    """
+    while True:
+
+        # Ask if they want to use the calculator again, only accepting 'y' or 'n'
+        choice = input("Do you wish to use the calculator again? [y/n] - ").strip().lower()
+
+        # Run game function again if user chooses "y"
+        if choice == "y":
+            calculation()
+
+        # End the game if user chooses "n"    
+        elif choice == "n":
+            break
+
+        # Tell user to choose only between "y/n"
+        else:
+            print("Please enter y/n ") 
+
+
+# Call the function to run the game
+# Can be used to import the main function and run in a different file
+if __name__ == "__main__": 
+    greeting()
+    calculation()
+    use_again()
