@@ -79,14 +79,22 @@ def calculation() -> float:
 
     while True:
         try:
+            
+            while True:
+                print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Square \n 6. Square Root (2nd number does not matter) \n")
 
-            print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Square \n 6. Square Root (2nd number does not matter) \n")
+                operation = int(input("Please enter your choice of operation [1/2/3/4/5/6]: "))
+                options = 1,2,3,4,5,6
 
-            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6]: "))
+                for operation in options: 
+                    
+                    break
+                else:
+                    print("Invalid operation!")
+                    break
 
             number_1 = float(input("Please enter the 1st number: "))
             number_2 = float(input("Please enter the 2nd number: "))
-
 
             if operation == 1:
                 add(number_1, number_2)
@@ -111,12 +119,10 @@ def calculation() -> float:
                 square_root(number_1)
                 break
 
-            else: 
-                continue
 
             break
         except ValueError:
-            print("Please enter valid numbers")
+            print("Please enter valid numbers \n")
 
     return number_1, number_2
 
