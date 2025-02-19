@@ -72,7 +72,7 @@ def square_root(number_1) -> float:
     return square_rooted_number    
 
 
-def get_operation(number_1, number_2) -> float:
+def get_operation() -> float:
     """
     This function asks the user for the operation they want to do
     """
@@ -84,7 +84,6 @@ def get_operation(number_1, number_2) -> float:
 
             number_1 = float(input("Please enter the 1st number: "))
             number_2 = float(input("Please enter the 2nd number: "))
-
 
             if operation == 1:
                 add(number_1, number_2)
@@ -115,25 +114,7 @@ def get_operation(number_1, number_2) -> float:
         except ValueError:
             print("Please enter a valid operation integer! \n")
 
-
-def calculation() -> float:
-    """
-    This function will do the calculation by calling other functions and display results
-    """
-
-    while True:
-        try:
-
-            number_1 = float(input("Please enter the 1st number: "))
-            number_2 = float(input("Please enter the 2nd number: "))
-
-            get_operation(number_1, number_2)
-
-            break
-        except ValueError:
-            print("Please enter valid numbers \n")
-
-    return number_1, number_2
+            return number_1, number_2
 
 
 def use_again() -> str:
@@ -147,7 +128,7 @@ def use_again() -> str:
 
         # Run game function again if user chooses "y"
         if choice == "y":
-            calculation()
+            get_operation()
 
         # End the game if user chooses "n"    
         elif choice == "n":
@@ -162,5 +143,5 @@ def use_again() -> str:
 # Can be used to import the main function and run in a different file
 if __name__ == "__main__": 
     greeting()
-    calculation()
+    get_operation()
     use_again()
