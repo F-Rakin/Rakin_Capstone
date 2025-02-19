@@ -52,14 +52,14 @@ def divide(number_1, number_2) -> float:
     return division
 
 
-def square(number_1, number_2) -> float:
+def exponent(number_1, number_2) -> float:
     """
-    This function will be used to square numbers
+    This function will give the result when number_2 is an exponent of number_1
     """
-    squared_number = number_1 ** number_2
-    print(f"The result of division is: {squared_number}")
+    exponent_number = number_1 ** number_2
+    print(f"The result is: {exponent_number}")
 
-    return squared_number   
+    return exponent_number   
 
 
 def square_root(number_1) -> float:
@@ -72,29 +72,19 @@ def square_root(number_1) -> float:
     return square_rooted_number    
 
 
-def calculation() -> float:
+def get_operation(number_1, number_2) -> float:
     """
-    This function will do the calculation by calling other functions and display results
+    This function asks the user for the operation they want to do
     """
-
     while True:
         try:
-            
-            while True:
-                print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Square \n 6. Square Root (2nd number does not matter) \n")
+            print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Exponent \n 6. Square Root (2nd number does not matter) \n")
 
-                operation = int(input("Please enter your choice of operation [1/2/3/4/5/6]: "))
-                options = 1,2,3,4,5,6
-
-                for operation in options: 
-                    
-                    break
-                else:
-                    print("Invalid operation!")
-                    break
+            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6]: "))
 
             number_1 = float(input("Please enter the 1st number: "))
             number_2 = float(input("Please enter the 2nd number: "))
+
 
             if operation == 1:
                 add(number_1, number_2)
@@ -113,12 +103,31 @@ def calculation() -> float:
                 break
 
             elif operation == 5:
-                square(number_1, number_2)
+                exponent(number_1, number_2)
 
             elif operation == 6:
                 square_root(number_1)
                 break
 
+            else: 
+                continue
+
+        except ValueError:
+            print("Please enter a valid operation integer! \n")
+
+
+def calculation() -> float:
+    """
+    This function will do the calculation by calling other functions and display results
+    """
+
+    while True:
+        try:
+
+            number_1 = float(input("Please enter the 1st number: "))
+            number_2 = float(input("Please enter the 2nd number: "))
+
+            get_operation(number_1, number_2)
 
             break
         except ValueError:
