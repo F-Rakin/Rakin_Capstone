@@ -12,7 +12,7 @@ def greeting() -> str :
     print(f"Hi {name}! Welcome to my Simple Calculator.") 
 
 
-def add(number_1, number_2) -> float: 
+def add(number_1: float, number_2: float) -> float: 
     """
     This function will be used to add numbers inputted
     """ 
@@ -22,7 +22,7 @@ def add(number_1, number_2) -> float:
     return addition
 
 
-def subtract(number_1, number_2) -> float:
+def subtract(number_1: float, number_2: float) -> float:
     """
     This function will be used to subtract one number from another
     """
@@ -32,7 +32,7 @@ def subtract(number_1, number_2) -> float:
     return subtraction
 
 
-def multiply(number_1, number_2) -> float:
+def multiply(number_1: float, number_2: float) -> float:
     """"
     This function will be used to multiply numbers
     """
@@ -42,7 +42,7 @@ def multiply(number_1, number_2) -> float:
     return multiplication
 
 
-def divide(number_1, number_2) -> float:
+def divide(number_1: float, number_2: float) -> float:
     """
     This function will be used to divide numbers
     """
@@ -52,7 +52,7 @@ def divide(number_1, number_2) -> float:
     return division
 
 
-def exponent(number_1, number_2) -> float:
+def exponent(number_1: float, number_2: float) -> float:
     """
     This function will give the result when number_2 is an exponent of number_1
     """
@@ -62,7 +62,7 @@ def exponent(number_1, number_2) -> float:
     return exponent_number   
 
 
-def square_root(number_1) -> float:
+def square_root(number_1: float) -> float:
     """
     This function will be used to square root the first number selected by the user
     """
@@ -70,17 +70,16 @@ def square_root(number_1) -> float:
     print(f"The square rooted number is: {square_rooted_number}")
 
     return square_rooted_number    
-
-
-def get_operation() -> float:
+      
+        
+def calculate(operation: int) -> float:
     """
-    This function asks the user for the operation they want to do
+    This function asks user to input numbers and calls functions based on the operation selected to do the calculation
+
+    :return: The 2 input numbers
     """
     while True:
-        try:
-            print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Exponent \n 6. Square Root (2nd number does not matter) \n")
-
-            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6]: "))
+        try:  
 
             number_1 = float(input("Please enter the 1st number: "))
             number_2 = float(input("Please enter the 2nd number: "))
@@ -109,12 +108,44 @@ def get_operation() -> float:
                 break
 
             else: 
-                continue
+                print("This is not a valid option! ")
+                break
 
         except ValueError:
             print("Please enter a valid operation integer! \n")
 
             return number_1, number_2
+
+
+def get_operation() -> float:
+    """
+    This function asks the user for the operation they want to do. 
+    Runs the calculation function if valid operation is selected.
+
+    :return: Operation input
+    """
+    while True: 
+        try:    
+            print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Exponent \n 6. Square Root (2nd number does not matter) \n")
+
+            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6]: "))
+                
+            if operation < 1:
+                print("This is not a valid option! ")
+                continue
+
+            elif operation > 6:
+                print("This is not a valid option! ")
+                continue
+
+            else: 
+                calculate(operation)
+                break
+
+        except ValueError:
+            print("Please enter a valid operation integer! \n")
+
+    return operation
 
 
 def use_again() -> str:
