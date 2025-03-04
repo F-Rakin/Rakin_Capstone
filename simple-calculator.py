@@ -70,7 +70,22 @@ def square_root(number_1: float) -> float:
     print(f"The square rooted number is: {square_rooted_number}")
 
     return square_rooted_number    
-      
+
+def factorial(number_1: float) -> float:
+    """
+    This function will be used to find the factorial of the first number selected by the user
+    """
+    # Convert float to integer before calculating factorial
+    converted_num = int(number_1)
+
+    if number_1 >= 0:
+        factorial_number = math.factorial(converted_num)
+        print(f"The factorial of {converted_num} is: {factorial_number}")
+
+    else: 
+        print("Please input a positive number for factorials! ")
+        pass
+     
         
 def calculate(operation: int) -> float:
     """
@@ -107,6 +122,10 @@ def calculate(operation: int) -> float:
                 square_root(number_1)
                 break
 
+            elif operation == 7:
+                factorial(number_1)
+                break
+
             else: 
                 print("This is not a valid option! ")
                 break
@@ -126,15 +145,16 @@ def get_operation() -> float:
     """
     while True: 
         try:    
-            print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Exponent \n 6. Square Root (2nd number does not matter) \n")
+            print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Exponent \n 6. Square Root (2nd number does not matter) \n \
+7. Factorial (2nd number does not matter)")
 
-            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6]: "))
+            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6/7]: "))
                 
             if operation < 1:
                 print("This is not a valid option! ")
                 continue
 
-            elif operation > 6:
+            elif operation > 7:
                 print("This is not a valid option! ")
                 continue
 
