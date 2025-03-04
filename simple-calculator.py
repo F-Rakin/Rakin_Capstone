@@ -71,33 +71,30 @@ def square_root(number_1: float) -> float:
 
     return square_rooted_number    
 
+
 def factorial(number_1: float) -> float:
     """
     This function will be used to find the factorial of the first number selected by the user
     """
     # Convert float to integer before calculating factorial
-    converted_num = int(number_1)
-
     if number_1 >= 0:
-        factorial_number = math.factorial(converted_num)
-        print(f"The factorial of {converted_num} is: {factorial_number}")
+        factorial_number = math.factorial(int(number_1))
+        print(f"The factorial of {number_1} is: {factorial_number}")
 
     else: 
         print("Please input a positive number for factorials! ")
         pass
      
         
-def calculate(operation: int) -> float:
+def calculate(number_1 : float, number_2 : float,  operation: int) -> float:
     """
     This function asks user to input numbers and calls functions based on the operation selected to do the calculation
 
     :return: The 2 input numbers
     """
+
     while True:
         try:  
-
-            number_1 = float(input("Please enter the 1st number: "))
-            number_2 = float(input("Please enter the 2nd number: "))
 
             if operation == 1:
                 add(number_1, number_2)
@@ -133,7 +130,28 @@ def calculate(operation: int) -> float:
         except ValueError:
             print("Please enter a valid operation integer! \n")
 
-            return number_1, number_2
+
+
+def get_number(operation):
+    """
+    This function asks input for number depending on the operation selected  and returns the numbers
+    """
+    while True:
+        try: 
+            if operation == 6 or 7:
+                number_1 = float(input("Please enter the 1st number: "))
+                return number_1
+                
+
+            else: 
+                number_1 = float(input("Please enter the 1st number: "))
+                number_2 = float(input("Please enter the 2nd number: "))
+                return number_1, number_2
+
+
+        except ValueError:
+            print("Input valid integers!")
+            continue
 
 
 def get_operation() -> float:
@@ -150,16 +168,18 @@ def get_operation() -> float:
 
             operation = int(input("Please enter your choice of operation [1/2/3/4/5/6/7]: "))
                 
-            if operation < 1:
+            if operation < 1 or operation > 7:
                 print("This is not a valid option! ")
                 continue
 
-            elif operation > 7:
-                print("This is not a valid option! ")
-                continue
+            elif operation == 6 or operation == 7:
+                result = get_number(operation)
+                calculate()
 
             else: 
-                calculate(operation)
+
+                number_1, number_2 = get_number(operation)
+                calculate(number_1, number_2, operation)
                 break
 
         except ValueError:
