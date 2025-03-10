@@ -46,10 +46,12 @@ def divide(number_1: float, number_2: float) -> float:
     """
     This function will be used to divide numbers
     """
-    division = round(number_1 / number_2, 4)
-    print(f"The result of division is: {division}")
+    if number_2 != 0:
+        division = round(number_1 / number_2, 4)
+        print(f"The result of division is: {division}")
 
-    return division
+    else:
+        print("Math Error. Can't divide by 0 !")
 
 
 def exponent(number_1: float, number_2: float) -> float:
@@ -138,7 +140,7 @@ def get_number(operation):
     """
     while True:
         try: 
-            if operation == 6 or 7:
+            if operation in [6,7]:
                 number_1 = float(input("Please enter the 1st number: "))
                 return number_1
                 
@@ -163,7 +165,7 @@ def get_operation() -> float:
     """
     while True: 
         try:    
-            print(" 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Exponent \n 6. Square Root (2nd number does not matter) \n \
+            print("\n 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Exponent \n 6. Square Root (2nd number does not matter) \n \
 7. Factorial (2nd number does not matter)")
 
             operation = int(input("Please enter your choice of operation [1/2/3/4/5/6/7]: "))
@@ -172,9 +174,9 @@ def get_operation() -> float:
                 print("This is not a valid option! ")
                 continue
 
-            elif operation == 6 or operation == 7:
-                result = get_number(operation)
-                calculate()
+            elif operation in [6,7]:
+                number_1 = get_number(operation)
+                calculate(number_1, 0, operation)
 
             else: 
 
