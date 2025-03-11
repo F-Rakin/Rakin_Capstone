@@ -97,7 +97,7 @@ def absolute_value(number_1: float)  -> float:
     print(f"The absolute value of {number_1} is: {abs_value_number}")
 
 
-def convert_degree_radians(operation, number_1: float) -> float:
+def convert_degree_radians(operation: int, number_1: float) -> float:
     """
     This function converts degrees to radians and vice versa
     """
@@ -111,6 +111,25 @@ def convert_degree_radians(operation, number_1: float) -> float:
 
         print(f"The converted value in radians is : {radians_number}")
 
+def convert_sin_cos_tan(operation: int, number_1: float) -> float:
+    """
+    This function calculates the sine, cosine and tangent of a number
+    """
+    if operation == 11:
+        sin_number = math.sin(number_1)
+                              
+        print(f"Sin({number_1}) is : {sin_number}")
+
+    elif operation == 12:
+        cos_number = math.cos(number_1)
+
+        print(f"Cos({number_1}) is : {cos_number}")
+    
+    elif operation == 13:
+        tan_number = math.tan(number_1)
+
+        print(f"Tan({number_1}) is : {tan_number}")
+
 
 def calculate(number_1 : float, number_2 : float,  operation: int) -> float:
     """
@@ -118,10 +137,8 @@ def calculate(number_1 : float, number_2 : float,  operation: int) -> float:
 
     :return: The 2 input numbers
     """
-
     while True:
         try:  
-
             if operation == 1:
                 add(number_1, number_2)
                 break
@@ -153,8 +170,12 @@ def calculate(number_1 : float, number_2 : float,  operation: int) -> float:
                 absolute_value(number_1)
                 break
 
-            elif operation == 9 or 10:
+            elif operation in [9,10]:
                 convert_degree_radians(operation, number_1)
+                break
+
+            elif operation in [11,12,13]:
+                convert_sin_cos_tan(operation, number_1)
                 break
 
             else: 
@@ -165,14 +186,13 @@ def calculate(number_1 : float, number_2 : float,  operation: int) -> float:
             print("Please enter a valid operation integer! \n")
 
 
-
 def get_number(operation):
     """
     This function asks input for number depending on the operation selected  and returns the numbers
     """
     while True:
         try: 
-            if operation in [6,7,8,9,10]:
+            if operation in [6,7,8,9,10,11,12,13]:
                 number_1 = float(input("Please enter the 1st number: "))
                 return number_1
                 
@@ -184,7 +204,7 @@ def get_number(operation):
 
 
         except ValueError:
-            print("Input valid integers!")
+            print("Input valid numbers!")
             continue
 
 
@@ -198,15 +218,15 @@ def get_operation() -> float:
     while True: 
         try:    
             print("\n 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Exponent \n 6. Square Root \n 7. Factorial \n 8. Absolute value \n \
-9. Convert radians to degrees. \n 10. Convert degrees to radians")
+9. Convert radians to degrees. \n 10. Convert degrees to radians \n 11. Sin [Unit: Radians] \n 12. Cos [Unit: Radians] \n 13. Tan [Unit: Radians] ")
 
-            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6/7/8/9/10]: "))
+            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6/7/8/9/10//11/12/13] : "))
                 
-            if operation < 1 or operation > 10:
+            if operation < 1 or operation > 13:
                 print("This is not a valid option! ")
                 continue
 
-            elif operation in [6,7,8,9,10]:
+            elif operation in [6,7,8,9,10,11,12,13]:
                 number_1 = get_number(operation)
                 calculate(number_1, 0, operation)
                 break
