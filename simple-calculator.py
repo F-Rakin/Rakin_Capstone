@@ -97,6 +97,21 @@ def absolute_value(number_1: float)  -> float:
     print(f"The absolute value of {number_1} is: {abs_value_number}")
 
 
+def convert_degree_radians(operation, number_1: float) -> float:
+    """
+    This function converts degrees to radians and vice versa
+    """
+    if operation == 9:
+        degrees_number = math.degrees(number_1)
+
+        print(f"The converted value in degrees is : {degrees_number}")
+        
+    elif operation == 10:
+        radians_number = math.radians(number_1)
+
+        print(f"The converted value in radians is : {radians_number}")
+
+
 def calculate(number_1 : float, number_2 : float,  operation: int) -> float:
     """
     This function asks user to input numbers and calls functions based on the operation selected to do the calculation
@@ -138,6 +153,10 @@ def calculate(number_1 : float, number_2 : float,  operation: int) -> float:
                 absolute_value(number_1)
                 break
 
+            elif operation == 9 or 10:
+                convert_degree_radians(operation, number_1)
+                break
+
             else: 
                 print("This is not a valid option! ")
                 break
@@ -153,7 +172,7 @@ def get_number(operation):
     """
     while True:
         try: 
-            if operation in [6,7,8]:
+            if operation in [6,7,8,9,10]:
                 number_1 = float(input("Please enter the 1st number: "))
                 return number_1
                 
@@ -178,15 +197,16 @@ def get_operation() -> float:
     """
     while True: 
         try:    
-            print("\n 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Exponent \n 6. Square Root \n 7. Factorial \n 8. Absolute value")
+            print("\n 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division (1st number/2nd number) \n 5. Exponent \n 6. Square Root \n 7. Factorial \n 8. Absolute value \n \
+9. Convert radians to degrees. \n 10. Convert degrees to radians")
 
-            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6/7/8]: "))
+            operation = int(input("Please enter your choice of operation [1/2/3/4/5/6/7/8/9/10]: "))
                 
-            if operation < 1 or operation > 8:
+            if operation < 1 or operation > 10:
                 print("This is not a valid option! ")
                 continue
 
-            elif operation in [6,7,8]:
+            elif operation in [6,7,8,9,10]:
                 number_1 = get_number(operation)
                 calculate(number_1, 0, operation)
                 break
