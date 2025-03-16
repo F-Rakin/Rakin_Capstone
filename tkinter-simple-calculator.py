@@ -1,12 +1,32 @@
 import tkinter as tk
 
-def add_to_Calculator():
+calculation = " "
+
+def add_to_Calculator(symbol):
+    global calculation
+    calculation += str(symbol)
+    text_result.delete(1.0, "end")
+    text_result.insert(1.0, calculation)
+    
     pass
 
-def evaluate_calculation():
+def evaluate_calculation() :
+    global calculation
+    try:
+        calculation = str(eval(calculation))
+        text_result.delete(1.0, "end")
+        text_result.insert(1.0, calculation)
+
+    except: 
+        clear_field()
+        text_result.insert(1.0, "Error")
+    
     pass
 
 def clear_field():
+    global calculation
+    calculation = ""
+    text_result.delete(1,0, "end")
     pass
 
 root = tk.Tk()
