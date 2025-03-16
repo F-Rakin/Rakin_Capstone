@@ -111,6 +111,7 @@ def convert_degree_radians(operation: int, number_1: float) -> float:
 
         print(f"The converted value in radians is : {radians_number}")
 
+
 def convert_sin_cos_tan(operation: int, number_1: float) -> float:
     """
     This function calculates the sine, cosine and tangent of a number
