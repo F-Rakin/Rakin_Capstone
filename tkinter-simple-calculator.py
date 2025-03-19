@@ -63,12 +63,13 @@ root = tk.Tk()
 
 # Add a title to the GUI
 root.title("Simple GUI Calculator")
+root.configure(bg="black")
 
 # Shape of the interface
-root.geometry("550x300")
+root.geometry("525x320")
 
 # Add a text input grid
-text_result = tk.Text(root, height= 2, width= 40, font= ("Arial", 20))
+text_result = tk.Text(root, height= 2, width= 35, font= ("Arial", 20), bd=8, relief="sunken")
 text_result.grid(columnspan=10)
 
 # Add buttons and commands
