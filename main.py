@@ -1,11 +1,8 @@
 # F.Rakin_Advanced_GUI_Calculator
 
-# Commit next time after cleaning up names before editing
-
 import customtkinter as ctk
 import math
 from tkinter import messagebox
-
 
 # Define the functions for each operation
 def add() -> float: 
@@ -24,7 +21,7 @@ def add() -> float:
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
 
-def subtract():
+def subtract() -> float:
     """
     This function will be used to subtract one number from another
     """
@@ -40,7 +37,7 @@ def subtract():
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
 
-def multiply():
+def multiply() -> float:
     """"
     This function will be used to multiply numbers
     """
@@ -55,7 +52,8 @@ def multiply():
     except ValueError:
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
-def divide():
+
+def divide() -> float:
     """
     This function will be used to divide numbers
     """
@@ -74,7 +72,7 @@ def divide():
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
 
-def square_root():
+def square_root() -> float:
     """
     This function will be used to square root the first number selected by the user
     """
@@ -92,7 +90,7 @@ def square_root():
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
 
-def factorial():
+def factorial() -> float:
     """
     This function will be used to find the factorial of the first number selected by the user
     """
@@ -110,7 +108,7 @@ def factorial():
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
 
-def absolute_value():
+def absolute_value() -> float:
     """
     This function wu=ill display the absolute value of a number
     """  
@@ -123,7 +121,8 @@ def absolute_value():
     except ValueError:
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
-def exponent():
+
+def exponent() -> float:
     """"
     This function will be used to find the exponent of a number
     """
@@ -139,7 +138,7 @@ def exponent():
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
 
-def convert_degrees_to_radians():
+def convert_degrees_to_radians() -> float:
     """
     This function converts degrees to radians
     """
@@ -153,7 +152,7 @@ def convert_degrees_to_radians():
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
 
-def convert_radians_to_degrees():
+def convert_radians_to_degrees() -> float:
     """
     This function converts radians to degrees
     """
@@ -167,30 +166,35 @@ def convert_radians_to_degrees():
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
 
-# Create input fields for numbers
-# Create the main window using CustomTkinter
-ctk.set_appearance_mode("Dark")  # Set the appearance mode to "Dark"
-ctk.set_default_color_theme("blue")  # You can change the color theme
+# Set the appearance mode to "Dark"
+ctk.set_appearance_mode("Dark")  
 
-root = ctk.CTk()  # Create a CustomTkinter window
-root.geometry("480x400")
+# Set custom theme
+ctk.set_default_color_theme("blue")  
+
+# Create a CustomTkinter window
+root = ctk.CTk()  
+root.geometry("375x400")
 root.title("Advanced Calculator")
 
-# Create input fields for numbers with your preferred names
+# Create input fields for numbers
 label_number_1 = ctk.CTkLabel(root, text="Please enter the 1st number:")
 label_number_1.grid(row=0, column=0, padx=10, pady=10)
 
+# Grid to enter the 1st number
 entry_number_1 = ctk.CTkEntry(root)
 entry_number_1.grid(row=0, column=1, padx=10, pady=10)
 
+# Labeling grid to guide user
 label_number_2 = ctk.CTkLabel(root, text="Please enter the 2nd number:")
 label_number_2.grid(row=1, column=0, padx=10, pady=10)
 
+# Grid to enter 2nd number
 entry_number_2 = ctk.CTkEntry(root)
 entry_number_2.grid(row=1, column=1, padx=10, pady=10)
 
 # Create result label
-label_result = ctk.CTkLabel(root, text="Result: ", font=("Arial", 14))
+label_result = ctk.CTkLabel(root, text="Result: ", font=("Arial", 18))
 label_result.grid(row=7, column=0, columnspan=2, padx=10, pady=10)
 
 # Create buttons for operations
