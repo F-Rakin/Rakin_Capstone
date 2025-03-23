@@ -225,7 +225,64 @@ def convert_radians_to_degrees() -> float:
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
 
-def round_number():
+def sin_number() -> float:
+    """
+    This function calculates the sin of a number that is inputted in radians
+    """
+    try:
+        # Only store the first number entered into a variable
+        number_1 = float(entry_number_1.get())
+
+        # Find the sin of the number
+        result = math.sin(number_1)
+
+        # Display the result
+        label_result.configure(text=f"Result (degrees): {result}")
+
+    except ValueError:
+        # Validation to check for invalid inputs
+        messagebox.showerror("Invalid Input", "Please enter a valid number.")
+
+
+def cos_number() -> float:
+    """
+    This function calculates the cos of a number that is inputted in radians
+    """
+    try:
+        # Only store the first number entered into a variable
+        number_1 = float(entry_number_1.get())
+
+        # Find the cos of the number
+        result = math.cos(number_1)
+
+        # Display the result
+        label_result.configure(text=f"Result (degrees): {result}")
+
+    except ValueError:
+        # Validation to check for invalid inputs
+        messagebox.showerror("Invalid Input", "Please enter a valid number.")
+
+
+def tan_number() -> float:
+    """
+    This function calculates the tan of a number that is inputted in radians
+    """
+    try:
+        # Only store the first number entered into a variable
+        number_1 = float(entry_number_1.get())
+
+        # Find the tan of the number
+        result = math.tan(number_1)
+
+        # Display the result
+        label_result.configure(text=f"Result (degrees): {result}")
+
+    except ValueError:
+        # Validation to check for invalid inputs
+        messagebox.showerror("Invalid Input", "Please enter a valid number.")
+
+
+def round_number() -> float:
     """
     This function rounds the result displayed to 4 decimal places.
     """
@@ -258,7 +315,7 @@ ctk.set_default_color_theme("blue")
 
 # Create a CustomTkinter window
 root = ctk.CTk()  
-root.geometry("370x450")
+root.geometry("370x500")
 root.title("Advanced Calculator")
 
 # Create input fields for numbers
@@ -279,7 +336,7 @@ entry_number_2.grid(row=1, column=1, padx=10, pady=10)
 
 # Create result label
 label_result = ctk.CTkLabel(root, text="Result: ", font=("Arial", 18))
-label_result.grid(row=8, column=0, columnspan=2, padx=10, pady=10)
+label_result.grid(row=9, column=0, columnspan=2, padx=10, pady=10)
 
 # Create buttons for operations
 button_add = ctk.CTkButton(root, text="Add", command=add)
@@ -312,9 +369,18 @@ button_degrees_to_radians.grid(row=6, column=0, padx=10, pady=10)
 button_radians_to_degrees = ctk.CTkButton(root, text="Radians to Degrees", command=convert_radians_to_degrees)
 button_radians_to_degrees.grid(row=6, column=1, padx=10, pady=10)
 
+button_sin = ctk.CTkButton(root, text="Sin (Radians)", command=sin_number)
+button_sin.grid(row=7, column=0, padx=10, pady=10)
+
+button_cos = ctk.CTkButton(root, text="Cos (Radians)", command=cos_number)
+button_cos.grid(row=7, column=1, padx=10, pady=10)
+
+button_tan = ctk.CTkButton(root, text="Tan (Radians)", command=tan_number)
+button_tan.grid(row=8, column=0, padx=10, pady=10)
+
 # Add button to round the final result to 4 decimal place
 button_round = ctk.CTkButton(root, text="Round", command=round_number)
-button_round.grid(row=7, column=0, padx=10, pady=10)
+button_round.grid(row=8, column=1, padx=10, pady=10)
 
 # Start the main loop
 root.mainloop()
