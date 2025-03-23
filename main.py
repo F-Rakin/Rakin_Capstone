@@ -1,8 +1,15 @@
 # F.Rakin_Advanced_GUI_Calculator
 
+# Import custom tkinter model for better UI
 import customtkinter as ctk
+
+# Import math library for complex calculations
 import math
+
+# Import pre made messagebox layout for error message popup
 from tkinter import messagebox
+
+
 
 # Define the functions for each operation
 def add() -> float: 
@@ -10,14 +17,18 @@ def add() -> float:
     This function will be used to add numbers inputted
     """ 
     try:
+        # Store the 2 number inputs in variables from the entry field by using the "get" function
         number_1 = float(entry_number_1.get())
         number_2 = float(entry_number_2.get())
 
+        # Add the 2 numbers
         result = number_1 + number_2
 
+        # Show the result in the result box
         label_result.configure(text=f"Result: {result}")
 
     except ValueError:
+        # Validation to check for invalid inputs
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
 
@@ -26,14 +37,18 @@ def subtract() -> float:
     This function will be used to subtract one number from another
     """
     try:
+        # Store the 2 number inputs in variables from the entry field by using the "get" function
         number_1 = float(entry_number_1.get())
         number_2 = float(entry_number_2.get())
 
+        # Subtract the 2 numbers
         result = number_1 - number_2
 
+        # Show the result in the result box
         label_result.configure(text=f"Result: {result}")
 
     except ValueError:
+        # Validation to check for invalid inputs
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
 
@@ -42,14 +57,18 @@ def multiply() -> float:
     This function will be used to multiply numbers
     """
     try:
+        # Store the 2 number inputs in variables from the entry field by using the "get" function
         number_1 = float(entry_number_1.get())
         number_2 = float(entry_number_2.get())
 
+        # Multiply the 2 numbers
         result = number_1 * number_2
 
+        # Show the result in the result box
         label_result.configure(text=f"Result: {result}")
 
     except ValueError:
+        # Validation to check for invalid inputs
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
 
@@ -58,17 +77,24 @@ def divide() -> float:
     This function will be used to divide numbers
     """
     try:
+        # Store the 2 number inputs in variables from the entry field by using the "get" function
         number_1 = float(entry_number_1.get())
         number_2 = float(entry_number_2.get())
 
+        # Check if the 2nd number is 0 or not
         if number_2 == 0:
+            # If 2nd number is 0, show Math Error message in popup messagebox
             messagebox.showerror("Math Error", "Cannot divide by zero.")
 
         else:
+            # Divide the 1st number by the 2nd number otherwise
             result = number_1 / number_2
-            label_result.configure(text=f"Result: {result:.4f}")
+
+        # Show the result in the result box
+            label_result.configure(text=f"Result: {result}")
 
     except ValueError:
+        # Validation to check for invalid inputs
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
 
@@ -77,16 +103,20 @@ def square_root() -> float:
     This function will be used to square root the first number selected by the user
     """
     try:
+        # Only store the first number entered into a variable
         number_1 = float(entry_number_1.get())
 
+        # If the number is negative show Math error message in the popup messagebox
         if number_1 < 0:
             messagebox.showerror("Math Error", "Cannot take square root of negative number.")
 
+        # Otherwise do the square root calculation and display the result
         else:
             result = math.sqrt(number_1)
             label_result.configure(text=f"Result: {result}")
 
     except ValueError:
+        # Validation to check for invalid inputs
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
 
@@ -95,16 +125,28 @@ def factorial() -> float:
     This function will be used to find the factorial of the first number selected by the user
     """
     try:
+        # Only store the first number entered into a variable
         number_1 = float(entry_number_1.get())
 
-        if number_1 < 0 or not number_1.is_integer():
+        # Check if the input number is negative
+        if number_1 < 0:
+
+            # Show Math error message if number is negative
             messagebox.showerror("Math Error", "Factorial is only defined for non-negative integers.")
 
+        # Check is the input number is an integer
+        elif not number_1.is_integer(): 
+
+            #  Show Math error message if the number is not an integer 
+            messagebox.showerror("Math Error", "Factorial is only defined for integers.") 
+
         else:
+            # Otherwise find the factorial of the number and display the result
             result = math.factorial(int(number_1))
             label_result.configure(text=f"Result: {result}")
 
     except ValueError:
+        # Validation to check for invalid inputs
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
 
@@ -113,12 +155,17 @@ def absolute_value() -> float:
     This function wu=ill display the absolute value of a number
     """  
     try:
+        # Only store the first number entered into a variable
         number_1 = float(entry_number_1.get())
+
+        # Find the absolute value of the number using the "abs" function
         result = abs(number_1)
 
+        # Display the result
         label_result.configure(text=f"Result: {result}")
 
     except ValueError:
+        # Validation to check for invalid inputs
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
 
@@ -130,8 +177,10 @@ def exponent() -> float:
         number_1 = float(entry_number_1.get())
         number_2 = float(entry_number_2.get())
 
+        # Find the result when the 2nd number is an exponent of the 1st number
         result = number_1 ** number_2
 
+        # Display the result
         label_result.configure(text=f"Result: {result}")
 
     except ValueError:
@@ -144,8 +193,10 @@ def convert_degrees_to_radians() -> float:
     """
     try:
         number_1 = float(entry_number_1.get())
+        # Find result when the number is converted to radians
         result = math.radians(number_1)
 
+        # Display the result
         label_result.configure(text=f"Result (radians): {result}")
 
     except ValueError:
@@ -158,8 +209,10 @@ def convert_radians_to_degrees() -> float:
     """
     try:
         number_1 = float(entry_number_1.get())
+        # Find result when the number is converted to degrees
         result = math.degrees(number_1)
 
+        # Display the result
         label_result.configure(text=f"Result (degrees): {result}")
 
     except ValueError:
@@ -174,7 +227,7 @@ ctk.set_default_color_theme("blue")
 
 # Create a CustomTkinter window
 root = ctk.CTk()  
-root.geometry("375x400")
+root.geometry("370x400")
 root.title("Advanced Calculator")
 
 # Create input fields for numbers

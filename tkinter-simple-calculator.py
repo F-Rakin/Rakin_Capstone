@@ -129,10 +129,10 @@ btn_close.grid(row=5, column=3)
 
 # Equal and clear buttons 
 # Greater columnspan to reduce empty space in the GUI
-btn_equals = tk.Button(root, text="=", command=evaluate_calculation, width=16, font=("Arial", 18))
+btn_equals = tk.Button(root, text="=", command=evaluate_calculation, width=18, font=("Arial", 18))
 btn_equals.grid(row=6, column=1, columnspan= 2)
 
-btn_clear = tk.Button(root, text="clear", command=clear_field, width=16, font=("Arial", 18))
+btn_clear = tk.Button(root, text="clear", command=clear_field, width=18, font=("Arial", 18))
 btn_clear.grid(row=6, column=3, columnspan=2)
 
 
