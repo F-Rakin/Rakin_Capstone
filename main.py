@@ -9,8 +9,6 @@ import math
 # Import pre made messagebox layout for error message popup
 from tkinter import messagebox
 
-
-
 # Define the functions for each operation
 def add() -> float: 
     """
@@ -174,6 +172,7 @@ def exponent() -> float:
     This function will be used to find the exponent of a number
     """
     try:
+        # Store the 2 number inputs in variables from the entry field by using the "get" function
         number_1 = float(entry_number_1.get())
         number_2 = float(entry_number_2.get())
 
@@ -184,6 +183,7 @@ def exponent() -> float:
         label_result.configure(text=f"Result: {result}")
 
     except ValueError:
+        # Validation to check for invalid inputs
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
 
@@ -192,7 +192,9 @@ def convert_degrees_to_radians() -> float:
     This function converts degrees to radians
     """
     try:
+        # Only store the first number entered into a variable
         number_1 = float(entry_number_1.get())
+
         # Find result when the number is converted to radians
         result = math.radians(number_1)
 
@@ -200,6 +202,7 @@ def convert_degrees_to_radians() -> float:
         label_result.configure(text=f"Result (radians): {result}")
 
     except ValueError:
+        # Validation to check for invalid inputs
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
 
@@ -208,7 +211,9 @@ def convert_radians_to_degrees() -> float:
     This function converts radians to degrees
     """
     try:
+        # Only store the first number entered into a variable
         number_1 = float(entry_number_1.get())
+
         # Find result when the number is converted to degrees
         result = math.degrees(number_1)
 
@@ -216,8 +221,34 @@ def convert_radians_to_degrees() -> float:
         label_result.configure(text=f"Result (degrees): {result}")
 
     except ValueError:
+        # Validation to check for invalid inputs
         messagebox.showerror("Invalid Input", "Please enter a valid number.")
 
+
+def round_number():
+    """
+    This function rounds the result displayed to 4 decimal places.
+    """
+    try:
+        # Retrieve the current result text from the label and strip "Result: " part
+
+        # Store the current result in a variable as a string using the "cget" function
+        result_text = label_result.cget("text")
+
+        # Use the "split" function to split the string when ":" shows up in the string
+        # Use the index value to access the number part of the string
+        result_value = float(result_text.split(": ")[1]) 
+
+        # Round the result to 4 decimal places
+        rounded_result = round(result_value, 4)
+
+        # Update the label with the rounded result
+        label_result.configure(text=f"Result: {rounded_result}")
+
+    except ValueError:
+        # If the result text is not a valid number show an error message
+        messagebox.showerror("Error", "No valid result to round.")
+    
 
 # Set the appearance mode to "Dark"
 ctk.set_appearance_mode("Dark")  
@@ -227,7 +258,7 @@ ctk.set_default_color_theme("blue")
 
 # Create a CustomTkinter window
 root = ctk.CTk()  
-root.geometry("370x400")
+root.geometry("370x450")
 root.title("Advanced Calculator")
 
 # Create input fields for numbers
@@ -248,7 +279,7 @@ entry_number_2.grid(row=1, column=1, padx=10, pady=10)
 
 # Create result label
 label_result = ctk.CTkLabel(root, text="Result: ", font=("Arial", 18))
-label_result.grid(row=7, column=0, columnspan=2, padx=10, pady=10)
+label_result.grid(row=8, column=0, columnspan=2, padx=10, pady=10)
 
 # Create buttons for operations
 button_add = ctk.CTkButton(root, text="Add", command=add)
@@ -281,6 +312,9 @@ button_degrees_to_radians.grid(row=6, column=0, padx=10, pady=10)
 button_radians_to_degrees = ctk.CTkButton(root, text="Radians to Degrees", command=convert_radians_to_degrees)
 button_radians_to_degrees.grid(row=6, column=1, padx=10, pady=10)
 
+# Add button to round the final result to 4 decimal place
+button_round = ctk.CTkButton(root, text="Round", command=round_number)
+button_round.grid(row=7, column=0, padx=10, pady=10)
+
 # Start the main loop
 root.mainloop()
-
