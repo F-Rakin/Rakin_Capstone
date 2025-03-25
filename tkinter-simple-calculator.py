@@ -69,7 +69,8 @@ root.configure(bg="black")
 root.geometry("525x320")
 
 # Add a text input grid
-text_result = tk.Text(root, height= 2, width= 35, font= ("Arial", 20), bd=8, relief="sunken")
+text_result = tk.Text(root, height= 2, width= 34, font= ("Arial", 20), bd=8, relief="sunken")
+text_result.configure(bg="light grey")
 text_result.grid(columnspan=10)
 
 # Add buttons and commands
