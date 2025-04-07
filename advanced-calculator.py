@@ -90,7 +90,7 @@ def factorial(number_1: float) -> float:
 
 def absolute_value(number_1: float)  -> float:
     """
-    This function wu=ill display the absolute value of a number
+    This function will display the absolute value of a number
     """       
     abs_value_number = math.fabs(number_1)
 
